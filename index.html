@@ -1,1 +1,599 @@
-Michael Ryan it's me
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Ryan - Góc Nhỏ Chia Sẻ & Tra Cứu KQXS</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fefce8',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            900: '#713f12',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(245, 158, 11, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.8)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand -->
+                <a href="https://michaelryan035.web.app/" class="flex items-center gap-3.5 group">
+                    <div class="relative">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" 
+                             alt="Michael Ryan" 
+                             class="w-11 h-11 rounded-full object-cover border-2 border-amber-500/80 group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-amber-500/20">
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">Michael Ryan</span>
+                        <span class="text-xs text-slate-400 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Blog Cá Nhân & Tra cứu KQXS
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+                    <a href="https://michaelryan035.web.app/" class="px-4 py-2 text-sm font-medium text-slate-950 bg-amber-400 rounded-full shadow-sm shadow-amber-500/30 font-semibold">Trang chủ</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-4 pt-3 pb-6 space-y-3">
+            <a href="https://michaelryan035.web.app/" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-950 bg-amber-400 font-semibold">Trang chủ</a>
+            <a href="#bai-viet" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900">Bài viết</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900">Giới thiệu</a>
+            <a href="https://michaelryan03.vercel.app/" target="_blank" rel="noopener" class="block text-center w-full mt-2 px-4 py-3 rounded-xl font-semibold text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500">
+                <i class="fa-solid fa-bolt text-slate-950 mr-2"></i> Tra cứu Xổ Số Đại Phát
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12" id="trang-chu">
+
+        <!-- Hero Banner Section -->
+        <section class="relative rounded-3xl overflow-hidden glass-panel border border-slate-800/80 shadow-2xl">
+            <!-- Background Banner Image -->
+            <div class="relative h-64 sm:h-80 md:h-[380px] w-full overflow-hidden">
+                <img src="https://sf-static.upanhlaylink.com/img/image_202610090b1ade2dcc4db84c8906a1cf7f676667.jpg" 
+                     alt="Michael Ryan Banner" 
+                     class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-amber-950/10 mix-blend-overlay"></div>
+            </div>
+
+            <!-- Profile Info Bar Overlapping -->
+            <div class="relative px-6 pb-8 pt-0 sm:px-10 flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20 sm:-mt-24">
+                
+                <!-- Avatar with Glowing Neon Border -->
+                <div class="relative group flex-shrink-0">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" 
+                         alt="Michael Ryan Avatar" 
+                         class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-slate-950 shadow-2xl">
+                    <span class="absolute bottom-2 right-2 w-6 h-6 bg-emerald-500 border-4 border-slate-950 rounded-full flex items-center justify-center text-[10px] text-white font-bold" title="Trạng thái: Trực tuyến">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+
+                <!-- Text Info -->
+                <div class="flex-1 text-center md:text-left space-y-2">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 backdrop-blur-md">
+                            <i class="fa-solid fa-pen-nib mr-1"></i> Blogger & Reviewer
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 backdrop-blur-md">
+                            <i class="fa-solid fa-calendar-check mr-1"></i> Trực tiếp Xổ Số Chiều Thứ 2
+                        </span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+                        Michael Ryan
+                    </h1>
+                    
+                    <p class="text-slate-300 text-sm sm:text-base max-w-2xl font-normal leading-relaxed">
+                        Chuyên trang chia sẻ cảm xúc chiều Thứ 2 và địa chỉ tra cứu kết quả xổ số Huế, Phú Yên mượt mà và chuẩn xác.
+                    </p>
+                </div>
+
+                <!-- Action Button in Hero -->
+                <div class="flex items-center gap-3 w-full md:w-auto justify-center">
+                    <a href="https://michaelryan035.web.app/" class="px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-slate-200 hover:text-white hover:border-slate-500 transition flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-amber-400"></i>
+                        <span>michaelryan035.web.app</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story & Main Narrative Section -->
+        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Main Story Card (8 Cols) -->
+            <div class="lg:col-span-8 glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800/80 space-y-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Section Header -->
+                <div class="flex items-center gap-3 border-b border-slate-800/80 pb-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-lg">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white">Góc nhỏ</h2>
+                        <p class="text-xs text-slate-400">Tâm sự đầu tuần cùng Michael Ryan</p>
+                    </div>
+                </div>
+
+                <!-- Story Text Content -->
+                <div class="space-y-5 text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
+                    <p class="first-letter:text-5xl first-letter:font-extrabold first-letter:text-amber-400 first-letter:mr-3 first-letter:float-left first-letter:leading-none">
+                        Chào bạn, mình là <strong class="text-white font-semibold">Michael Ryan</strong> đây!
+                    </p>
+                    
+                    <p>
+                        Chiều Thứ 2 đầu tuần nào cũng vậy, cứ tầm chiều muộn là mình lại thấy lòng nôn nao hẳn lên. Cái cảm giác gạt hết công việc sang một bên, thong thả pha ly trà nóng rồi ngồi ngóng chờ từng dãy số nổ ra nó vừa hồi hộp mà vừa giải trí lạ kỳ.
+                    </p>
+
+                    <div class="p-5 rounded-2xl bg-slate-900/80 border-l-4 border-amber-500 my-6 shadow-inner space-y-2">
+                        <p class="text-slate-200 italic font-medium">
+                            "Nếu bạn cũng mê cảm giác này thì ghé góc nhỏ này chơi nha! Mình tạo ra đây đơn giản để chia sẻ địa chỉ theo dõi xổ số huế mượt mà và chuẩn xác tại Xổ Số Đại Phát."
+                        </p>
+                    </div>
+
+                    <p>
+                        Cứ đúng khung giờ từ <span class="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-300 font-semibold text-sm">17h15 đến 17h35 chiều Thứ 2</span>, bảng kết quả mở thưởng quay tới đâu là hiển thị trực tiếp ngay tới đó. Cần tra cứu kết quả xs phu yen hay các đài đầu tuần lúc nào cũng nhanh chóng và tiện lợi. Bạn ghé qua theo dõi cùng mình cho xôm tụ nhé!
+                    </p>
+                </div>
+
+                <!-- Interactive Author Signature -->
+                <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" alt="Michael Ryan" class="w-10 h-10 rounded-full border border-amber-500/50">
+                        <div>
+                            <span class="block text-sm font-bold text-white">Michael Ryan</span>
+                            <span class="block text-xs text-slate-400">Tác giả & Cập nhật viên</span>
+                        </div>
+                    </div>
+                    <button id="like-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/30 transition text-sm">
+                        <i class="fa-regular fa-heart text-amber-500"></i>
+                        <span id="like-count">142</span> Thích
+                    </button>
+                </div>
+            </div>
+
+            <!-- Golden Hour Banner / Countdown Widget (4 Cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- Live Status & Countdown Card -->
+                <div class="glass-panel rounded-3xl p-6 border border-slate-800/80 relative overflow-hidden space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            KHUNG GIỜ QUAY THƯỞNG TRỰC TIẾP
+                        </span>
+                        <span class="text-xs text-slate-400">Chiều Thứ 2</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Trực Tiếp Xổ Số Huế & Phú Yên</h3>
+                        <p class="text-xs text-slate-400">Đài Mở Thưởng Đầu Tuần</p>
+                    </div>
+
+                    <!-- Highlighted Time Box -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-950/40 to-slate-900 border border-amber-500/30 text-center space-y-1">
+                        <span class="text-xs uppercase tracking-wider text-amber-300 font-semibold">Thời gian mở thưởng</span>
+                        <div class="text-3xl font-black text-amber-400 tracking-tight gold-gradient-text">
+                            17:15 - 17:35
+                        </div>
+                        <p class="text-[11px] text-slate-400">Cập nhật từng giải quay tức thì</p>
+                    </div>
+
+                    <!-- Dynamic Countdown Clock to Next Monday 17:15 -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Đếm ngược đến kỳ quay tiếp theo:</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 text-center" id="countdown-timer">
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-days">00</span>
+                                <span class="text-[10px] text-slate-500">Ngày</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-hours">00</span>
+                                <span class="text-[10px] text-slate-500">Giờ</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-mins">00</span>
+                                <span class="text-[10px] text-slate-500">Phút</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-amber-400" id="cd-secs">00</span>
+                                <span class="text-[10px] text-slate-500">Giây</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Link Button -->
+                    <a href="https://michaelryan03.vercel.app/" target="_blank" rel="noopener" class="w-full py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-slate-950 bg-amber-400 hover:bg-amber-300 transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+                        <span>Tra Cứu Tại Xổ Số Đại Phát</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Articles Section -->
+        <section id="bai-viet" class="space-y-6">
+            
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2.5">
+                        <i class="fa-solid fa-newspaper text-amber-400 text-xl"></i>
+                        <span>Bài Viết & Kinh Nghiệm Hay</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">Góc chia sẻ mẹo tra cứu xổ số Huế, Phú Yên và các đài đầu tuần</p>
+                </div>
+                <a href="https://michaelryan03.vercel.app/" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition flex items-center gap-1">
+                    <span>Xem tất cả</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Articles Grid 3 Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Featured Article 1 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_20260819b5c94bd646031bba3f06aca54abbdea4.jpg" 
+                             alt="Theo dõi Xổ Số Huế Chiều Thứ 2" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Nổi Bật
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-regular fa-folder mr-1"></i>Kinh Nghiệm</span>
+                                <span>•</span>
+                                <span>Thứ 2 hàng tuần</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Hướng Dẫn Theo Dõi Xổ Số Huế & Xổ Số Phú Yên Chiều Thứ 2 Siêu Tốc
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Khung giờ vàng 17h15 - 17h35 chiều Thứ 2 đầu tuần. Tra cứu trực tiếp mượt mà, chính xác từng con số tại Xổ Số Đại Phát.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <span class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Đọc tiếp <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_20260819b5c94bd646031bba3f06aca54abbdea4.jpg" 
+                             alt="Cảm xúc chiều Thứ 2 đầu tuần" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Thư Giãn
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-regular fa-clock mr-1"></i>Góc Nhỏ</span>
+                                <span>•</span>
+                                <span>17h15 chiều</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Tại Sao Chiều Thứ 2 Đầu Tuần Lại Mang Lại Cảm Giác Thư Giãn Đặc Biệt?
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Cùng Michael Ryan nhâm nhi tách trà nóng và chờ đón những dãy số may mắn đầu tuần bùng nổ tại Xổ Số Đại Phát.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <span class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Đọc tiếp <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_20260819b5c94bd646031bba3f06aca54abbdea4.jpg" 
+                             alt="Tra cứu Xổ Số Miền Trung và Miền Nam" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Hướng Dẫn
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-solid fa-list-check mr-1"></i>Mẹo Hay</span>
+                                <span>•</span>
+                                <span>Mới cập nhật</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Hướng Dẫn Tra Cứu Kết Quả Xổ Số Các Đài Miền Trung & Miền Nam Thứ 2 Nhanh Chóng
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Tổng hợp các mẹo xem lại kết quả xổ số Huế, Phú Yên và các đài đầu tuần chính xác, giao diện dễ nhìn tại hệ thống.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <span class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Đọc tiếp <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-slate-800/80 bg-slate-950/80 py-8 text-slate-400 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-500">&copy; 2026 Michael Ryan. All rights reserved.</p>
+
+            <!-- Social Favicon Links -->
+            <div class="flex items-center space-x-3">
+                <a href="https://michaelryan03.github.io/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="GitHub">
+                    <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan-03.netlify.app/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Netlify">
+                    <img src="https://www.google.com/s2/favicons?domain=netlify.com&sz=64" alt="Netlify" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan.codeberg.page/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Codeberg">
+                    <img src="https://www.google.com/s2/favicons?domain=codeberg.org&sz=64" alt="Codeberg" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan03.framer.website/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Framer">
+                    <img src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="Framer" class="w-4 h-4">
+                </a>
+                <a href="https://www.pinterest.com/michaelryan03" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Pinterest">
+                    <img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="Pinterest" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan.michaelryan03.workers.dev/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Cloudflare Workers">
+                    <img src="https://www.google.com/s2/favicons?domain=workers.cloudflare.com&sz=64" alt="Cloudflare Workers" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan.pages.dev/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Cloudflare Pages">
+                    <img src="https://www.google.com/s2/favicons?domain=workers.cloudflare.com&sz=64" alt="Cloudflare Pages" class="w-4 h-4">
+                </a>
+                <a href="https://gitlab.com/michaelryan03" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="GitLab">
+                    <img src="https://www.google.com/s2/favicons?domain=gitlab.com&sz=64" alt="GitLab" class="w-4 h-4">
+                </a>
+                <a href="https://michael-ryan03.onrender.com/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Render">
+                    <img src="https://www.google.com/s2/favicons?domain=render.com&sz=64" alt="Render" class="w-4 h-4">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded Interactive JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Toast Notification Helper
+            function showToast(message, type = 'success') {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+
+                const toast = document.createElement('div');
+                toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border transition-all duration-300 transform translate-y-2 opacity-0 ${
+                    type === 'success' 
+                        ? 'bg-slate-900 text-amber-400 border-amber-500/40' 
+                        : 'bg-slate-900 text-amber-400 border-amber-500/40'
+                }`;
+                
+                toast.innerHTML = `
+                    <i class="fa-solid fa-circle-check text-amber-400"></i>
+                    <span>${message}</span>
+                `;
+
+                container.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-2', 'opacity-0');
+                }, 10);
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-2', 'opacity-0');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+
+            // Interactive Like Button
+            const likeBtn = document.getElementById('like-btn');
+            const likeCountEl = document.getElementById('like-count');
+            let liked = false;
+            let count = 142;
+
+            if (likeBtn && likeCountEl) {
+                likeBtn.addEventListener('click', () => {
+                    if (!liked) {
+                        count++;
+                        liked = true;
+                        likeBtn.classList.add('text-amber-400', 'border-amber-500/50', 'bg-amber-500/10');
+                        likeBtn.querySelector('i').classList.replace('fa-regular', 'fa-solid');
+                        showToast('Cảm ơn bạn đã yêu thích bài viết của Michael Ryan!');
+                    } else {
+                        count--;
+                        liked = false;
+                        likeBtn.classList.remove('text-amber-400', 'border-amber-500/50', 'bg-amber-500/10');
+                        likeBtn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
+                    }
+                    likeCountEl.textContent = count;
+                });
+            }
+
+            // Countdown to Next Monday 17:15
+            function updateCountdown() {
+                const now = new Date();
+                let target = new Date();
+                
+                const dayOfWeek = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+                let daysUntilMonday = (1 - dayOfWeek + 7) % 7;
+                
+                if (dayOfWeek === 1) {
+                    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+                    if (currentMinutes >= 17 * 60 + 15) {
+                        daysUntilMonday = 7;
+                    }
+                } else if (daysUntilMonday === 0) {
+                    daysUntilMonday = 7;
+                }
+
+                target.setDate(now.getDate() + daysUntilMonday);
+                target.setHours(17, 15, 0, 0);
+
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cd-days').textContent = "00";
+                    document.getElementById('cd-hours').textContent = "00";
+                    document.getElementById('cd-mins').textContent = "00";
+                    document.getElementById('cd-secs').textContent = "00";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / 1000 / 60) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+                document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
