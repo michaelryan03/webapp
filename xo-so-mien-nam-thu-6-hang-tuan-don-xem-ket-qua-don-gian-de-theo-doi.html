@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xổ Số Miền Nam Thứ 6 hàng tuần: Đón xem kết quả đơn giản, dễ theo dõi - Michael Ryan</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fefce8',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            900: '#713f12',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(245, 158, 11, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.8)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .glass-card:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand -->
+                <a href="https://michaelryan035.web.app/" class="flex items-center gap-3.5 group">
+                    <div class="relative">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" 
+                             alt="Michael Ryan" 
+                             class="w-11 h-11 rounded-full object-cover border-2 border-amber-500/80 group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-amber-500/20">
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">Michael Ryan</span>
+                        <span class="text-xs text-slate-400 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-check text-amber-400 text-[10px]"></i> Blog Cá Nhân & Tra cứu KQXS
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800">
+                    <a href="https://michaelryan035.web.app/" class="px-4 py-2 text-sm font-medium text-slate-950 bg-amber-400 rounded-full shadow-sm shadow-amber-500/30 font-semibold">Trang chủ</a>
+                    <a href="#bai-viet" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition">Bài viết</a>
+                    <a href="#about" class="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white transition">Giới thiệu</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-4 pt-3 pb-6 space-y-3">
+            <a href="https://michaelryan035.web.app/" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-950 bg-amber-400 font-semibold">Trang chủ</a>
+            <a href="#bai-viet" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900">Bài viết</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900">Giới thiệu</a>
+            <a href="https://xosodaiphat.com/xsmn-thu-6.html" target="_blank" rel="noopener" class="block text-center w-full mt-2 px-4 py-3 rounded-xl font-semibold text-sm text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500">
+                <i class="fa-solid fa-bolt text-slate-950 mr-2"></i> Tra Cứu XSMN Thứ 6
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12" id="trang-chu">
+
+        <!-- Hero Banner Section -->
+        <section class="relative rounded-3xl overflow-hidden glass-panel border border-slate-800/80 shadow-2xl">
+            <div class="relative h-64 sm:h-80 md:h-[380px] w-full overflow-hidden">
+                <img src="https://sf-static.upanhlaylink.com/img/image_202610090b1ade2dcc4db84c8906a1cf7f676667.jpg" 
+                     alt="Xổ Số Miền Nam Thứ 6" 
+                     class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-amber-950/10 mix-blend-overlay"></div>
+            </div>
+
+            <!-- Profile Info Bar -->
+            <div class="relative px-6 pb-8 pt-0 sm:px-10 flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20 sm:-mt-24">
+                <div class="relative group flex-shrink-0">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse-slow"></div>
+                    <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" 
+                         alt="Michael Ryan Avatar" 
+                         class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-slate-950 shadow-2xl">
+                    <span class="absolute bottom-2 right-2 w-6 h-6 bg-emerald-500 border-4 border-slate-950 rounded-full flex items-center justify-center text-[10px] text-white font-bold" title="Trạng thái: Trực tuyến">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+
+                <div class="flex-1 text-center md:text-left space-y-2">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 backdrop-blur-md">
+                            <i class="fa-solid fa-pen-nib mr-1"></i> Xổ Số Kiến Thiết
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20 backdrop-blur-md">
+                            <i class="fa-solid fa-calendar-check mr-1"></i> Chiều Thứ 6 Hàng Tuần
+                        </span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                        Xổ Số Miền Nam Thứ 6 hàng tuần: Đón xem kết quả đơn giản, dễ theo dõi
+                    </h1>
+                </div>
+
+                <div class="flex items-center gap-3 w-full md:w-auto justify-center">
+                    <a href="https://michaelryan035.web.app/" class="px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-slate-200 hover:text-white hover:border-slate-500 transition flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-amber-400"></i>
+                        <span>michaelryan035.web.app</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story & Main Narrative Section -->
+        <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Main Content Area (8 Cols) -->
+            <div class="lg:col-span-8 glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800/80 space-y-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Article Content -->
+                <div class="space-y-6 text-slate-200 text-base leading-relaxed font-normal">
+                    
+                    <p class="first-letter:text-5xl first-letter:font-extrabold first-letter:text-amber-400 first-letter:mr-3 first-letter:float-left first-letter:leading-none">
+                        Chào mừng anh chị đã quay trở lại với những thông tin hữu ích về hoạt động xổ số kiến thiết truyền thống. Sau một tuần làm việc miệt mài, ngày thứ sáu luôn mang đến một cảm giác nhẹ nhàng và đầy mong đợi cho nhiều người dân tại khu vực phía Nam.
+                    </p>
+                    
+                    <p>
+                        Việc theo dõi kết quả quay số mở thưởng không chỉ là một hình thức giải trí lành mạnh mà còn thể hiện tinh thần đóng góp cho ngân sách nhà nước theo phương châm ích nước lợi nhà. Trong kỷ nguyên số hiện nay, việc tiếp cận thông tin đã trở nên đơn giản hơn bao giờ hết, giúp anh chị tiết kiệm thời gian và công sức mà vẫn đảm bảo tính chính xác và minh bạch. Theo dõi <a href="https://xosodaiphat.com/xsmn-thu-6.html" target="_blank" rel="noopener" class="text-amber-400 font-semibold underline hover:text-amber-300 transition">kết quả xổ số miền nam thứ sáu hàng tuần</a> trực tuyến sẽ giúp trải nghiệm cập nhật giải thưởng của anh chị diễn ra vô cùng nhanh chóng.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-amber-400 border-l-4 border-amber-500 pl-3 py-1 my-4 bg-slate-900/50 rounded-r-lg">
+                        LỊCH MỞ THƯỞNG VÀ CÁC ĐÀI QUAY SỐ VÀO THỨ 6 HÀNG TUẦN
+                    </h2>
+
+                    <h3 class="text-lg font-semibold text-white">Khung giờ vàng đón xem kết quả trực tiếp</h3>
+
+                    <p>
+                        Đối với khu vực miền Nam, hoạt động quay số mở thưởng được diễn ra định kỳ hằng ngày với sự luân phiên của các đài địa phương. Riêng vào ngày thứ sáu hàng tuần, sẽ có 3 đài truyền thống thực hiện mở thưởng để phục vụ nhu cầu tra cứu của anh chị. Các đài quay số vào ngày này bao gồm đài Vĩnh Long, đài Bình Dương và đài Trà Vinh. Đây là ba địa phương có truyền thống phát triển xổ số kiến thiết mạnh mẽ, thu hút sự quan tâm của đông đảo người dân địa phương cũng như các tỉnh lân cận.
+                    </p>
+
+                    <!-- Image 1 Inserted naturally -->
+                    <div class="my-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-2 text-center space-y-2">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_202610212f58fb69b149ba50a508361d041842f5.jpg" 
+                             alt="Xổ Số Miền Nam Thứ 6" 
+                             class="w-full h-auto rounded-xl object-cover max-h-[450px]">
+                        <p class="text-xs text-slate-400 italic">Nguồn: Vesophattai</p>
+                    </div>
+
+                    <p>
+                        Thời gian bắt đầu quá trình quay thưởng trực tiếp là từ 16h10 và kéo dài đến khoảng 16h35 cùng ngày. Đây là khung giờ cố định đã được quy định từ lâu, giúp anh chị dễ dàng sắp xếp công việc để theo dõi. Việc nắm rõ lịch mở thưởng không chỉ giúp anh chị chủ động trong việc kiểm tra vé số mà còn mang lại cảm giác an tâm khi mọi quy trình đều được thực hiện đúng giờ, đúng định kỳ theo quy định của nhà nước.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-amber-400 border-l-4 border-amber-500 pl-3 py-1 my-4 bg-slate-900/50 rounded-r-lg">
+                        TRẢI NGHIỆM NGƯỜI DÙNG SỐ KHI TRA CỨU KẾT QUẢ XỔ SỐ
+                    </h2>
+
+                    <h3 class="text-lg font-semibold text-white">Giao diện tối giản và tốc độ tải trang ấn tượng</h3>
+
+                    <p>
+                        Trong thời đại mà điện thoại thông minh trở thành vật bất ly thân, trải nghiệm của anh chị trên không gian số luôn được đặt lên hàng đầu. Một trang web tra cứu kết quả lý tưởng cần đáp ứng được các tiêu chí về tốc độ và sự tiện dụng.
+                    </p>
+
+                    <p>
+                        Khi anh chị truy cập để tìm kiếm kết quả xổ số miền Nam thứ sáu, cảm giác đầu tiên phải là sự mượt mà trong từng thao tác vuốt chạm. Hệ thống được tối ưu hóa để dữ liệu hiển thị ngay lập tức, giúp anh chị không phải chờ đợi lâu ngay cả khi đường truyền mạng không quá mạnh. Nhất là khi tra cứu kết quả đài Bình Dương, các trang tin lớn hỗ trợ cập nhật kết quả <a href="https://xosodaiphat.com/xsbd-xo-so-binh-duong.html" target="_blank" rel="noopener" class="text-amber-400 font-semibold underline hover:text-amber-300 transition">xo so binh duong</a> vô cùng chính xác.
+                    </p>
+
+                    <p>
+                        Giao diện trang web được thiết kế theo phong cách tối giản, sử dụng các tông màu hài hòa để không gây mỏi mắt khi anh chị theo dõi lâu. Các bảng kết quả được trình bày rõ ràng, font chữ to và dễ nhìn, đảm bảo dù anh chị đang di chuyển hay ngồi tại nhà cũng có thể đọc được thông tin một cách dễ dàng. Đặc biệt, thông tin được cập nhật nhanh chóng, chuẩn xác và tiện lợi tại trang web Xổ số Đại Phát, giúp anh chị luôn có được những dữ liệu mới nhất từ trường quay một cách minh bạch.
+                    </p>
+
+                    <!-- Image 2 Inserted naturally -->
+                    <div class="my-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-2 text-center space-y-2">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_20261021f25268c26179c918c92cfbc4f6f7dc52.jpg" 
+                             alt="Xố số miền nam thứ sáu ngày 21/10/2026" 
+                             class="w-full h-auto rounded-xl object-cover max-h-[450px]">
+                        <p class="text-xs text-slate-400 italic">Xố số miền nam thứ sáu ngày 21/10/2026 - Nguồn ảnh: Xổ số Đại Phát</p>
+                    </div>
+
+                    <p>
+                        Khả năng tương thích trên nhiều thiết bị cũng là một điểm cộng lớn. Dù anh chị sử dụng điện thoại chạy hệ điều hành Android, iOS hay sử dụng máy tính cá nhân, bảng kết quả luôn hiển thị đầy đủ và cân đối.
+                    </p>
+
+                    <p>
+                        Việc xem kết quả trực tiếp theo thời gian từ trường quay giúp anh chị cảm nhận được không khí sôi động, công bằng trong từng lần quay số, từ giải tám cho đến giải đặc biệt.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-amber-400 border-l-4 border-amber-500 pl-3 py-1 my-4 bg-slate-900/50 rounded-r-lg">
+                        CƠ CẤU GIẢI THƯỞNG XỔ SỐ MIỀN NAM MỆNH GIÁ MƯỜI NGHÌN ĐỒNG
+                    </h2>
+
+                    <h3 class="text-lg font-semibold text-white">Danh sách các hạng giải thưởng cụ thể</h3>
+
+                    <p>
+                        Xổ số miền Nam nói chung và các đài quay thưởng vào thứ sáu nói riêng đều áp dụng một cơ cấu giải thưởng thống nhất cho loại vé mệnh giá 10.000 VNĐ. Với hình thức quay 18 lần và bộ vé gồm 6 chữ số, hệ thống giải thưởng vô cùng đa dạng, tạo ra nhiều cơ hội nhận thưởng cho anh chị. Dưới đây là chi tiết các hạng giải mà anh chị có thể nhận được:
+                    </p>
+
+                    <ul class="list-disc list-inside space-y-2 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-sm font-medium">
+                        <li><strong class="text-amber-400">1 Giải Đặc biệt:</strong> Giá trị 2.000.000.000 VNĐ cho mỗi giải.</li>
+                        <li><strong class="text-amber-400">10 Giải Nhất:</strong> Mỗi giải trị giá 30.000.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">10 Giải Nhì:</strong> Mỗi giải trị giá 15.000.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">20 Giải Ba:</strong> Mỗi giải trị giá 10.000.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">70 Giải Tư:</strong> Mỗi giải trị giá 3.000.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">100 Giải Năm:</strong> Mỗi giải trị giá 1.000.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">300 Giải Sáu:</strong> Mỗi giải trị giá 400.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">1.000 Giải Bảy:</strong> Mỗi giải trị giá 200.000 VNĐ.</li>
+                        <li><strong class="text-amber-400">10.000 Giải Tám:</strong> Mỗi giải trị giá 100.000 VNĐ.</li>
+                    </ul>
+
+                    <p>Ngoài các giải chính, hệ thống còn có các giải phụ để tăng thêm sự hào hứng cho người tham gia:</p>
+
+                    <ul class="list-disc list-inside space-y-2 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-sm font-medium">
+                        <li><strong class="text-amber-400">09 Giải Phụ Đặc biệt:</strong> Mỗi giải trị giá 50.000.000 VNĐ dành cho những vé chỉ sai một chữ số ở hàng trăm ngàn so với giải đặc biệt.</li>
+                        <li><strong class="text-amber-400">45 Giải Khuyến khích:</strong> Mỗi giải trị giá 6.000.000 VNĐ dành cho những vé trúng chữ số hàng trăm ngàn và sai một chữ số ở bất kỳ hàng nào còn lại của giải đặc biệt.</li>
+                    </ul>
+
+                    <h2 class="text-xl font-bold text-amber-400 border-l-4 border-amber-500 pl-3 py-1 my-4 bg-slate-900/50 rounded-r-lg">
+                        ĐỊA CHỈ TRỤ SỞ CÁC CÔNG TY XỔ SỐ KIẾN THIẾT MIỀN NAM THỨ 6
+                    </h2>
+
+                    <h3 class="text-lg font-semibold text-white">Thông tin liên hệ để nhận thưởng</h3>
+
+                    <p>
+                        Để đảm bảo quyền lợi khi trúng thưởng, anh chị cần nắm rõ thông tin về trụ sở chính của các công ty xổ số kiến thiết. Đây là nơi tiếp nhận và xử lý các thủ tục trao thưởng một cách chuyên nghiệp và bảo mật. Dưới đây là địa chỉ cụ thể của 3 đài mở thưởng vào ngày thứ sáu:
+                    </p>
+
+                    <ul class="space-y-3 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
+                            <span><strong class="text-white">Công ty Xổ số kiến thiết Vĩnh Long:</strong> Địa chỉ tại 51E Nguyễn Trung Trực, phường Tân Hạnh, Tỉnh Vĩnh Long.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
+                            <span><strong class="text-white">Công ty Xổ số kiến thiết Bình Dương:</strong> Địa chỉ tại 01 Huỳnh Văn Nghệ, Phường Phú Lợi, TP. Hồ Chí Minh.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-amber-400 mt-1"></i>
+                            <span><strong class="text-white">Công ty Xổ số kiến thiết Trà Vinh:</strong> Địa chỉ tại Số 54A Phạm Ngũ Lão, Phường Trà Vinh, Tỉnh Vĩnh Long.</span>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Khi đi nhận thưởng, anh chị vui lòng mang theo tờ vé số còn nguyên vẹn, không rách nát, không tẩy xóa cùng với giấy tờ tùy thân hợp lệ. Việc thực hiện đúng quy định không chỉ giúp quá trình lĩnh thưởng diễn ra nhanh chóng mà còn bảo vệ quyền lợi hợp pháp của chính anh chị.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-amber-400 border-l-4 border-amber-500 pl-3 py-1 my-4 bg-slate-900/50 rounded-r-lg">
+                        LỢI ÍCH XÃ HỘI VÀ Ý NGHĨA CỦA XỔ SỐ KIẾN THIẾT
+                    </h2>
+
+                    <p>
+                        Xổ số kiến thiết không đơn thuần là một hoạt động giải trí cá nhân mà còn mang một sứ mệnh cao cả đối với cộng đồng.
+                    </p>
+
+                    <p>
+                        Nguồn thu từ hoạt động này được đóng góp trực tiếp vào ngân sách địa phương để xây dựng các công trình công cộng như trường học, bệnh viện, cầu đường và các chương trình an sinh xã hội. Mỗi tấm vé mà anh chị mua chính là một viên gạch góp phần xây dựng quê hương thêm giàu đẹp.
+                    </p>
+
+                    <p>
+                        Hãy luôn duy trì thói quen tra cứu thông tin tại những nguồn uy tín để đảm bảo trải nghiệm của mình luôn an toàn và đầy đủ. Để việc theo dõi kết quả trở nên dễ dàng và thuận tiện hơn, anh chị hãy thường xuyên ghé thăm Xổ số Đại Phát để nắm bắt mọi thông tin về thị trường xổ số kiến thiết hôm nay.
+                    </p>
+
+                    <!-- Link "Xem thêm" theo yêu cầu -->
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                        <span class="text-sm text-slate-400">Xem thêm thông tin tác giả và hồ sơ chi tiết:</span>
+                        <a href="https://app.hellothematic.com/creator/profile/1181353" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 text-xs font-semibold flex items-center gap-2 transition">
+                            <span>Xem thêm</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Author Signature -->
+                <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_2026100959b871c14827a471570188c38fe7108c.jpg" alt="Michael Ryan" class="w-10 h-10 rounded-full border border-amber-500/50">
+                        <div>
+                            <span class="block text-sm font-bold text-white">Michael Ryan</span>
+                            <span class="block text-xs text-slate-400">Tác giả & Tổng hợp tin tức</span>
+                        </div>
+                    </div>
+                    <button id="like-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/30 transition text-sm">
+                        <i class="fa-regular fa-heart text-amber-500"></i>
+                        <span id="like-count">218</span> Thích
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar Info Widget (4 Cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- Live Status & Countdown Card -->
+                <div class="glass-panel rounded-3xl p-6 border border-slate-800/80 relative overflow-hidden space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            KHUNG GIỜ QUAY THƯỞNG TRỰC TIẾP
+                        </span>
+                        <span class="text-xs text-slate-400">Chiều Thứ 6</span>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-1">Xổ Số Vĩnh Long, Bình Dương, Trà Vinh</h3>
+                        <p class="text-xs text-slate-400">Các Đài Mở Thưởng Thứ 6</p>
+                    </div>
+
+                    <!-- Highlighted Time Box -->
+                    <div class="p-4 rounded-2xl bg-gradient-to-br from-amber-950/40 to-slate-900 border border-amber-500/30 text-center space-y-1">
+                        <span class="text-xs uppercase tracking-wider text-amber-300 font-semibold">Thời gian mở thưởng</span>
+                        <div class="text-3xl font-black text-amber-400 tracking-tight gold-gradient-text">
+                            16:10 - 16:35
+                        </div>
+                        <p class="text-[11px] text-slate-400">Cập nhật trực tiếp theo kỳ quay</p>
+                    </div>
+
+                    <!-- Countdown Clock to Next Friday 16:10 -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span>Đếm ngược đến kỳ quay tiếp theo:</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 text-center" id="countdown-timer">
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-days">00</span>
+                                <span class="text-[10px] text-slate-500">Ngày</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-hours">00</span>
+                                <span class="text-[10px] text-slate-500">Giờ</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-white" id="cd-mins">00</span>
+                                <span class="text-[10px] text-slate-500">Phút</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-lg font-bold text-amber-400" id="cd-secs">00</span>
+                                <span class="text-[10px] text-slate-500">Giây</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Link Button -->
+                    <a href="https://xosodaiphat.com/xsmn-thu-6.html" target="_blank" rel="noopener" class="w-full py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-center text-slate-950 bg-amber-400 hover:bg-amber-300 transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+                        <span>Tra Cứu Kết Quả XSMN Thứ 6</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature xem bài viết liên quan Section -->
+        <section id="bai-viet" class="space-y-6">
+            
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2.5">
+                        <i class="fa-solid fa-newspaper text-amber-400 text-xl"></i>
+                        <span>Bài Viết Liên Quan</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">Góc chia sẻ mẹo tra cứu kết quả xổ số miền Nam và các đài địa phương</p>
+                </div>
+                <a href="https://xosodaiphat.com/xsmn-thu-6.html" target="_blank" rel="noopener" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition flex items-center gap-1">
+                    <span>Xem thêm</span>
+                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Related Articles Grid 3 Columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Related Article 1 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_202610212f58fb69b149ba50a508361d041842f5.jpg" 
+                             alt="Tra cứu Xổ Số Bình Dương" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Bình Dương
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-regular fa-folder mr-1"></i>XSMN Thứ 6</span>
+                                <span>•</span>
+                                <span>16h10 Thứ 6</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Hướng Dẫn Tra Cứu Kết Quả Xổ Số Bình Dương Nhanh Và Chuẩn Xác Nhất
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Cập nhật kết quả xo so binh duong mỗi chiều Thứ 6 trực tiếp từ trường quay, hiển thị tức thì, minh bạch và chính xác.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <a href="https://xosodaiphat.com/xsbd-xo-so-binh-duong.html" target="_blank" rel="noopener" class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Article 2 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_20261021f25268c26179c918c92cfbc4f6f7dc52.jpg" 
+                             alt="Cơ cấu giải thưởng xổ số miền Nam" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Giải Thưởng
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-regular fa-clock mr-1"></i>Cơ Cấu Giải</span>
+                                <span>•</span>
+                                <span>Mới cập nhật</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Chi Tiết Cơ Cấu Giải Thưởng Vé Số 10.000 VNĐ Đài Miền Nam
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Đánh giá chi tiết cơ cấu giải thưởng XSMN với Giải Đặc Biệt trị giá 2 tỷ đồng cùng danh sách các giải phụ quy đổi hấp dẫn.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <a href="https://xosodaiphat.com/xsmn-thu-6.html" target="_blank" rel="noopener" class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Article 3 -->
+                <article class="glass-card rounded-2xl overflow-hidden border border-slate-800/80 hover:border-amber-500/50 transition-all duration-300 flex flex-col group">
+                    <div class="relative aspect-video w-full overflow-hidden bg-slate-900">
+                        <img src="https://sf-static.upanhlaylink.com/img/image_202610090b1ade2dcc4db84c8906a1cf7f676667.jpg" 
+                             alt="Địa chỉ đổi thưởng xổ số" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-[11px] font-bold shadow">
+                            Nhận Thưởng
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-400">
+                                <span class="text-amber-400 font-semibold"><i class="fa-solid fa-list-check mr-1"></i>Thủ Tục</span>
+                                <span>•</span>
+                                <span>Hỗ trợ người chơi</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-2">
+                                Những Điều Cần Lưu Ý Khi Nhận Thưởng Xổ Số Kiến Thiết Miền Nam
+                            </h3>
+                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                                Tổng hợp thông tin địa chỉ trụ sở các công ty xổ số Vĩnh Long, Bình Dương, Trà Vinh và lưu ý về giấy tờ khi làm thủ tục lĩnh thưởng.
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-400 font-medium">Tác giả: <strong class="text-slate-200">Michael Ryan</strong></span>
+                            <a href="https://app.hellothematic.com/creator/profile/1181353" target="_blank" rel="noopener" class="text-amber-400 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                Xem thêm <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-slate-800/80 bg-slate-950/80 py-8 text-slate-400 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-slate-500">&copy; 2026 Michael Ryan. All rights reserved.</p>
+
+            <!-- Social Favicon Links -->
+            <div class="flex items-center space-x-3">
+                <a href="https://michaelryan03.github.io/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="GitHub">
+                    <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan-03.netlify.app/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Netlify">
+                    <img src="https://www.google.com/s2/favicons?domain=netlify.com&sz=64" alt="Netlify" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan.codeberg.page/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Codeberg">
+                    <img src="https://www.google.com/s2/favicons?domain=codeberg.org&sz=64" alt="Codeberg" class="w-4 h-4">
+                </a>
+                <a href="https://michaelryan03.framer.website/" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Framer">
+                    <img src="https://www.google.com/s2/favicons?domain=framer.com&sz=64" alt="Framer" class="w-4 h-4">
+                </a>
+                <a href="https://www.pinterest.com/michaelryan03" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 transition" title="Pinterest">
+                    <img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="Pinterest" class="w-4 h-4">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded Interactive JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Toast Notification Helper
+            function showToast(message) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+
+                const toast = document.createElement('div');
+                toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-2xl text-xs font-semibold flex items-center gap-2 border transition-all duration-300 transform translate-y-2 opacity-0 bg-slate-900 text-amber-400 border-amber-500/40`;
+                
+                toast.innerHTML = `
+                    <i class="fa-solid fa-circle-check text-amber-400"></i>
+                    <span>${message}</span>
+                `;
+
+                container.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-2', 'opacity-0');
+                }, 10);
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-2', 'opacity-0');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+
+            // Interactive Like Button
+            const likeBtn = document.getElementById('like-btn');
+            const likeCountEl = document.getElementById('like-count');
+            let liked = false;
+            let count = 218;
+
+            if (likeBtn && likeCountEl) {
+                likeBtn.addEventListener('click', () => {
+                    if (!liked) {
+                        count++;
+                        liked = true;
+                        likeBtn.classList.add('text-amber-400', 'border-amber-500/50', 'bg-amber-500/10');
+                        likeBtn.querySelector('i').classList.replace('fa-regular', 'fa-solid');
+                        showToast('Cảm ơn bạn đã yêu thích bài viết Xổ Số Miền Nam Thứ 6!');
+                    } else {
+                        count--;
+                        liked = false;
+                        likeBtn.classList.remove('text-amber-400', 'border-amber-500/50', 'bg-amber-500/10');
+                        likeBtn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
+                    }
+                    likeCountEl.textContent = count;
+                });
+            }
+
+            // Countdown to Next Friday 16:10
+            function updateCountdown() {
+                const now = new Date();
+                let target = new Date();
+                
+                const dayOfWeek = now.getDay(); // 0 = Sun, 5 = Fri
+                let daysUntilFriday = (5 - dayOfWeek + 7) % 7;
+                
+                if (dayOfWeek === 5) {
+                    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+                    if (currentMinutes >= 16 * 60 + 10) {
+                        daysUntilFriday = 7;
+                    }
+                } else if (daysUntilFriday === 0) {
+                    daysUntilFriday = 7;
+                }
+
+                target.setDate(now.getDate() + daysUntilFriday);
+                target.setHours(16, 10, 0, 0);
+
+                const diff = target - now;
+
+                if (diff <= 0) {
+                    document.getElementById('cd-days').textContent = "00";
+                    document.getElementById('cd-hours').textContent = "00";
+                    document.getElementById('cd-mins').textContent = "00";
+                    document.getElementById('cd-secs').textContent = "00";
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / 1000 / 60) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+                document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
